@@ -28,6 +28,8 @@ namespace classes
             this.Owner = owner;
             this.Number = accountNumberSeed++.ToString();
 
+            Console.WriteLine($"Creating bank account #{this.Number} for {this.Owner}.\n\n");
+
             MakeDeposit(balance, DateTime.Now, "Initial Deposit");
         }
 
@@ -35,6 +37,8 @@ namespace classes
             if (amount <= 0) {
                 throw new ArgumentOutOfRangeException(nameof(amount), "Amount deposited must be positive.");
             }
+
+            Console.WriteLine($"Making a deposit of {amount} to account number {this.Number}.\n\n");
             var new_deposit = new Transaction(amount, date, note);
             allTransactions.Add(new_deposit);
         }
